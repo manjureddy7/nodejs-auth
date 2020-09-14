@@ -1,0 +1,42 @@
+GET http://localhost:8080
+
+###
+GET http://localhost:8080/protected
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE2MDAwNTk3NTksImV4cCI6MTYwMDA1OTgwNCwiYXVkIjoiNWY1YjZjZjQyNDVkM2EzZjA0YmU0YTIwIiwiaXNzIjoiZ29vZ2xlLmNvbSJ9.sSsoXDBrfXoHtb5dDlylR9Rnnvv1PG2iT97y2mg0OvY
+
+###
+GET http://localhost:8080/error
+
+###
+POST http://localhost:8080/auth/register
+Content-Type: application/json
+
+{
+    "email":"newtest@test.com",
+    "password": "test"
+}
+
+###
+POST http://localhost:8080/auth/login
+Content-Type: application/json
+
+{
+    "email":"t@test.com",
+    "password": "test"
+}
+
+###
+POST http://localhost:8080/auth/refresh-token
+Content-Type: application/json
+
+{
+    "refreshToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE2MDAwNTk2MDQsImV4cCI6MTYzMTYxNzIwNCwiYXVkIjoiNWY1YjZjZjQyNDVkM2EzZjA0YmU0YTIwIiwiaXNzIjoiZ29vZ2xlLmNvbSJ9.WgqrOO-QB8UXT-XZofCisgCq9cnDrTn6BSnKvCshNaA"
+}
+
+###
+DELETE  http://localhost:8080/auth/logout
+Content-Type: application/json
+
+{
+    "refreshToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE2MDAwNjQ3ODIsImV4cCI6MTYzMTYyMjM4MiwiYXVkIjoiNWY1YjZjZjQyNDVkM2EzZjA0YmU0YTIwIiwiaXNzIjoiZ29vZ2xlLmNvbSJ9.Bb6dgIo2abs0OLp5bhHeeESfKnRPz3NNLXaNSJg20zA"
+}
