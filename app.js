@@ -7,11 +7,9 @@ require("dotenv").config();
 require("./helpers/init_mongodb");
 
 const AuthRoute = require("./Routes/Auth.Route");
-const {
-  verifyAccessToken
-} = require("./helpers/jwt_helper");
+const { verifyAccessToken } = require("./helpers/jwt_helper");
 
-require("./helpers/init_redis")
+require("./helpers/init_redis");
 
 const app = express();
 
@@ -33,6 +31,7 @@ app.get("/protected", verifyAccessToken, (req, res) => {
 
 app.use("/auth", AuthRoute);
 
+// Handling Error
 app.use(async (req, res, next) => {
   // This below implementation is the custom way of creating errors without any package
 
@@ -40,6 +39,7 @@ app.use(async (req, res, next) => {
   // error.status = 404;
   // next(error);
 
+  // Here with package
   next(createError.NotFound("yooo this shit route doesn't exist yaa"));
 
   // whenever we call next with error as parameter below middleware func will get triggereed

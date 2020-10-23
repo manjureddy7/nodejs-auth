@@ -30,15 +30,14 @@ UserSchema.pre("save", async function (next) {
 // This will get fired after save
 // UserSchema.post("save", function(){})
 
-
 // Creating our own custom method to validate password
 UserSchema.methods.isPasswordValid = async function (password) {
   try {
-    return bcrypt.compare(password, this.password)
+    return bcrypt.compare(password, this.password);
   } catch (error) {
-    throw error
+    throw error;
   }
-}
+};
 
 const User = mongoose.model("user", UserSchema);
 
